@@ -28,16 +28,6 @@ jobs:
           path: |
             target/surefire-reports/
             target/site/jacoco/
-      # Paso TEMPORAL: muestra que valores llegan (no imprime el token). Borrarlo cuando Sonar funcione.
-      - name: Debug sonar config
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_ORG: ${{ vars.SONAR_ORG }}
-          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
-        run: |
-          echo "ORG=[$SONAR_ORG]"
-          echo "KEY=[$SONAR_PROJECT_KEY]"
-          echo "TOKEN length: ${#SONAR_TOKEN}"
       - name: SonarQube Cloud Quality Gate
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
